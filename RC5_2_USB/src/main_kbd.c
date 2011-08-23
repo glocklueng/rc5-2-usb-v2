@@ -72,6 +72,69 @@
 __CRP const unsigned int CRP_WORD = CRP_NO_CRP ;
 
 
+/* Codigos USB HID for Keboard */
+#define HID_CODE_PLAY 			0x13		/* P Key */
+#define HID_CODE_PAUSE 			0x2C		/* Space Key */
+#define HID_CODE_STOP			0x1B		/* X Key */
+#define HID_CODE_FF				0x09		/* F Key */
+#define HID_CODE_REW			0x15		/* R Key */
+#define HID_CODE_LEFT			0x50		/* Left Arrow Key */
+#define HID_CODE_RIGHT			0x4F		/* Right Arrow Key */
+#define HID_CODE_UP				0x52		/* Up´Arrow Key */
+#define HID_CODE_DOWN			0x51		/* Down Arrow Key */
+#define HID_CODE_SELECT			0x1B		/* Enter Key */
+#define HID_CODE_SHUTDOWN_MENU	0x16		/* S Key */
+#define HID_CODE_HOME_MENU		0x1B		/* Escape Key */
+#define HID_CODE_PARENT_MENU	0x1B		/* Backspace Key */
+#define HID_CODE_VOLUME_LESS	0x56		/* - Keypad Key */
+#define HID_CODE_VOLUME_MORE	0x57		/* + Keypad Key */
+#define HID_CODE_ZERO			0x27		/* 0 Key */
+#define HID_CODE_ONE			0x1E		/* 1 Key */
+#define HID_CODE_TWO			0x1F		/* 2 Key */
+#define HID_CODE_THREE			0x20		/* 3 Key */
+#define HID_CODE_FOUR			0x21		/* 4 Key */
+#define HID_CODE_FIVE			0x22		/* 5 Key */
+#define HID_CODE_SIX			0x23		/* 6 Key */
+#define HID_CODE_SEVEN			0x24		/* 7 Key */
+#define HID_CODE_EIGHT			0x25		/* 8 Key */
+#define HID_CODE_NINE			0x26		/* 9 Key */
+#define HID_CODE_SHUTDOWN		0x4D		/* End Key */
+/**
+ * Funcion que toma el Código RC5 recibido y devuelve el código de Tecla a presionar
+  */
+uint8_t decodificar_RC5(uint8_t RC5_System, uint8_t RC5_Command )
+{
+	uint8_t keycode=0;
+	switch (RC5_Command){
+	case 0x35: 	keycode = HID_CODE_PLAY;		break;
+	case 0x30:	keycode = HID_CODE_PAUSE;		break;
+	case 0x36:	keycode = HID_CODE_STOP;		break;
+	case 0x34:	keycode = HID_CODE_FF;			break;
+	case 0x32:	keycode = HID_CODE_REW;			break;
+	case 0x55:	keycode = HID_CODE_LEFT;		break;
+	case 0x56:	keycode = HID_CODE_RIGHT;		break;
+	case 0x50:	keycode = HID_CODE_UP;			break;
+	case 0x51:	keycode = HID_CODE_DOWN;		break;
+	case 0x57:	keycode = HID_CODE_SELECT;		break;
+	case 0x52:	keycode = HID_CODE_HOME_MENU;	break;
+	case 0x11:	keycode = HID_CODE_VOLUME_LESS;	break;
+	case 0x10:	keycode = HID_CODE_VOLUME_MORE;	break;
+	case 0x00:	keycode = HID_CODE_ZERO;		break;
+	case 0x01:	keycode = HID_CODE_ONE;			break;
+	case 0x02:	keycode = HID_CODE_TWO;			break;
+	case 0x03:	keycode = HID_CODE_THREE;		break;
+	case 0x04:	keycode = HID_CODE_FOUR;		break;
+	case 0x05:	keycode = HID_CODE_FIVE;		break;
+	case 0x06:	keycode = HID_CODE_SIX;			break;
+	case 0x07:	keycode = HID_CODE_SEVEN;		break;
+	case 0x08:	keycode = HID_CODE_EIGHT;		break;
+	case 0x09:	keycode = HID_CODE_NINE;		break;
+	case 0x4D:	keycode = HID_CODE_SHUTDOWN;	break;
+
+	}
+
+	return(keycode);
+}
 
 
 
